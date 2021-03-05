@@ -6,6 +6,8 @@ git clone https://github.com/mchoy1/COMP383_MiniProject.git
 Software Required: -Python3 -Linux -os -Biopython -Kallisto -R Studio -Bowtie2 -SPAdes
 
 Main file is the miniProject.py (code pipeline)
+SRRs.txt file contains the four SRR numbers tested
+miniProject.log file contains output from miniProject.py script
 
 Project Instructions:
 
