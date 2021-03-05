@@ -3,7 +3,15 @@ In order to run this script, clone this github repository into your workspace:
 
 git clone https://github.com/mchoy1/COMP383_MiniProject.git
 
-Software Required: -Python3 -Linux -os -Biopython -Kallisto -R Studio -Bowtie2 -SPAdes
+Software Required: 
+-Python3 
+-Linux 
+-os 
+-Biopython 
+-Kallisto 
+-R Studio 
+-Bowtie2 
+-SPAdes
 
 Main file is the miniProject.py (code pipeline)
 SRRs.txt file contains the four SRR numbers tested
