@@ -14,7 +14,9 @@ Software Required:
 -SPAdes
 
 Main file is the miniProject.py (code pipeline)
+
 SRRs.txt file contains the four SRR numbers tested
+
 miniProject.log file contains output from miniProject.py script
 
 Project Instructions:
