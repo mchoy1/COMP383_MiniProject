@@ -58,3 +58,11 @@ def bowtie2(infile):
     os.system('bowtie2 --quiet --no-unal --al-conc bowtie2_' + infile
               + '.fastq -x EF999921_1 -1 ' + infile + '.1_1.fastq -2 '
               + infile + '.1_2.fastq -S bowtie_' + infile + '.sam')
+#calling main functions 
+srrData()
+CDSTranscriptomesIndex()
+infile = open('SRRs.txt','r').readlines()
+for srr in infile:
+    srr = srr.strip()
+    kallisto(srr)
+    bowtie2(srr)
