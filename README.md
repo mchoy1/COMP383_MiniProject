@@ -28,7 +28,15 @@ miniProject.log file contains output from miniProject.py script
 
 Project Instructions:
 
-1) We would like to compare HCMV transcriptomes 2- and 6-days post-infection (dpi). First, retrieve the following transcriptomes from two patient donors from SRA and convert to paired-end fastq files. You can use wget (by constructing the path based on the SRR numbers for each of these samples). Donor 1 (2dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896360 Donor 1 (6dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896363 Donor 3 (2dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896374 Donor 3 (6dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896375
+1) We would like to compare HCMV transcriptomes 2- and 6-days post-infection (dpi). First, retrieve the following transcriptomes from two patient donors from SRA and convert to paired-end fastq files. You can use wget (by constructing the path based on the SRR numbers for each of these samples). 
+
+Donor 1 (2dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896360 
+
+Donor 1 (6dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896363 
+
+Donor 3 (2dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896374 
+
+Donor 3 (6dpi): https://www.ncbi.nlm.nih.gov/sra/SRX2896375
 
 2) We will quantify TPM in each sample using kallisto, but first we need to build a transcriptome index for HCMV (NCBI accession EF999921). Use Biopython to retrieve and generate the appropriate input and then build the index with kallisto. You will need to extract the CDS features from the GenBank format. Write the following to your log file: The HCMV genome (EF999921) has (count # extracted) CDS.
 
