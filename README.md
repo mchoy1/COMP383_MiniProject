@@ -26,6 +26,10 @@ SRRs.txt file contains the four SRR numbers tested
 
 miniProject.log file contains output from miniProject.py script
 
+.fastq files as test data
+
+
+
 Project Instructions:
 
 1) We would like to compare HCMV transcriptomes 2- and 6-days post-infection (dpi). First, retrieve the following transcriptomes from two patient donors from SRA and convert to paired-end fastq files. You can use wget (by constructing the path based on the SRR numbers for each of these samples). 
