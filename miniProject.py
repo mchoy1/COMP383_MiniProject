@@ -59,9 +59,14 @@ def bowtie2(infile):
               + '.fastq -x EF999921_1 -1 ' + infile + '.1_1.fastq -2 '
               + infile + '.1_2.fastq -S bowtie_' + infile + '.sam')
     
-'''
+#function to count the bowtie pairs after and before filtering 
 #count bowtie2 reads
 def bowtie2Reads(infile):
+     #before filtering
+    SRR1_before = open(infile + '._1.fastq').readlines()
+    SRR2_before = open(infile + '._2.fastq').readlines()
+    beforeBowtie2 = (len(SRR1_before) + len(SRR2_before))/8
+    
     #after filtering
     SRR1_after = open('bowtie2_' + infile + '.1.fastq').readlines()
     SRR2_after = open('bowtie2_ ' + infile + '.2.fastq').readlines()
@@ -75,14 +80,11 @@ def bowtie2Reads(infile):
     else:
         donor = 'Donor 3 (6dpi)'
     afterBowtie2 =(len(SRR1_after) + len(SRR2_after))/8
-    #before filtering
-    SRR1_before = open(infile + '._1.fastq').readlines()
-    SRR2_before = open(infile + '._2.fastq').readlines()
-    beforeBowtie2 = (len(SRR1_before) + len(SRR2_before))/8
 
     log_outfile.write(donor + ' had ' + str(beforeBowtie2) +
                       ' read pairs before Bowtie 2 filtering and ' +
                       str(afterBowtie2) + ' read pairs after.')
+
 #input for sleuth function
 def sleuthInput(infile):
     sleuthOutput = open('SleuthInput.txt','w')
@@ -113,14 +115,14 @@ def SPAdes(infile):
     srr3 = infile[2]
     srr4 = infile[3]
     #run spades command
-    spades = ('spades -k 55,77,99,127 --only-assembler -t 2 -pe1-1 HCMV_' +
-              srr1 + '.1.fastq --pe1-2 HCMV_' + srr1 + '.2fastq --pe2-1' +
-              srr2 + '.1.fastq --pe2-2 HCMV_' + srr2 + '.2fastq --pe3-1' +
-              srr3 + '.1.fastq --pe3-2 HCMV_' + srr3 + '.2fastq --pe4-1' +
-              srr4 + '.1.fastq --pe4-2 HCMV_' + srr4 + '.2fastq -o SPAdesAssembly/')
+    spades = ('spades -k 55,77,99,127 --only-assembler -t 2 -pe1-1 EF999921_' +
+              srr1 + '.1.fastq --pe1-2 EF999921_' + srr1 + '.2fastq --pe2-1' +
+              srr2 + '.1.fastq --pe2-2 EF999921_' + srr2 + '.2fastq --pe3-1' +
+              srr3 + '.1.fastq --pe3-2 EF999921_' + srr3 + '.2fastq --pe4-1' +
+              srr4 + '.1.fastq --pe4-2 EF999921_' + srr4 + '.2fastq -o SPAdesAssembly/')
     os.system(spades)
     log_outfile.write(spades)
-'''
+
 srrData()
 CDSTranscriptomesIndex()
 infile = open('SRRs.txt','r').readlines()
@@ -128,7 +130,7 @@ for srr in infile:
     srr = srr.strip()
     kallisto(srr)
     bowtie2(srr)
-   # bowtie2Reads(srr)
-   # sleuthInput(srr)
-   # sleuth(srr)
-   # SPAdes(srr)
+    bowtie2Reads(srr)
+    sleuthInput(srr)
+    sleuth(srr)
+    SPAdes(srr)
